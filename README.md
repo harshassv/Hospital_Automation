@@ -1,2 +1,2 @@
 # Hospital_Automation
-![](images/Main.jpg)
+![](Images/Main.png)
