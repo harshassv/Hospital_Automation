@@ -1,0 +1,73 @@
+from tkinter import *
+from tkinter import messagebox
+import tkinter.font as font
+global window1st,window2nd
+def getdetails():
+    global window1st,window2nd
+    def back(Event=0):
+        window2nd.destroy()
+        first_window()
+    def payment():
+        pass
+    window1st.destroy()
+    window2nd=Tk()
+    window2nd.configure(bg='#ff8484')
+    window2nd.resizable(0,0)
+    window2nd.wm_attributes('-fullscreen','true')
+    f_back=Frame(window2nd,bg='#ff8484')
+    back_image=PhotoImage(file="Back_Arrow.png")
+    back_label=Label(f_back,image=back_image,bg='#ff8484')
+    back_label.pack(side='left')
+    back_label.bind('<Button-1>',back)
+    spaceL=Label(f_back,text='  ',bg='#ff8484').pack(side='right')
+    pay=Button(f_back,text='Make Payment',font=("Ariel",18),borderwidth=4,command=payment)
+    pay.pack(side='right')
+    f_back.pack(fill='x')
+    spaceF=Frame(window2nd,bg='#ff8484')
+    spaceL=Label(spaceF,bg='#ff8484').pack(fill='x')
+    spaceF.pack()
+    headF=Frame(window2nd,bg='#ff8484')
+    spaceL=Label(headF,text="\t\t\t",bg='#ff8484')
+    spaceL.pack(side='left')
+    headL1=Label(headF,text="Tablets :",font=("Ariel",20),bg='#ff8484')
+    headL1.pack(side='left')
+    headF.pack(fill='x')
+    spaceF=Frame(window2nd,bg='#ff8484')
+    spaceL=Label(spaceF,bg='#ff8484').pack(fill='x')
+    spaceF.pack()
+    f=open('medicines.txt','r')
+    for i in f:
+        head1F=Frame(window2nd,bg='#ff8484')
+        spaceL=Label(head1F,text="\t\t\t",bg='#ff8484')
+        spaceL.pack(side='left')
+        headL1=Label(head1F,text=i,font=("Ariel",20),bg='#ff8484')
+        headL1.pack(side='left')
+        head1F.pack(fill='x')
+        spaceL=Label(head1F,text=' ',font=("Ariel",20),bg='#ff8484').pack(fill='x',side='bottom')
+    window2nd.mainloop()
+def first_window():
+    global window1st,window2nd
+    window1st=Tk()
+    window1st.configure(bg='#ff8484')
+    window1st.resizable(0,0)
+    window1st.wm_attributes('-fullscreen','true')
+    for i in range(5):
+        spaceF=Frame(window1st,bg='#ff8484')
+        spaceL=Label(spaceF,bg='#ff8484').pack(fill='x')
+        spaceF.pack()
+    p_p_noF=Frame(window1st,bg='#ff8484')
+    p_p_noL=Label(p_p_noF,text='\t\t\tPatients Phone Number  :',font=("Ariel",20),bg='#ff8484')
+    p_p_noL.pack(side='left')
+    p_p_noE=Entry(p_p_noF,width=20,font=("Ariel",18))
+    p_p_noE.bind('<Return>',getdetails)
+    p_p_noE.pack(side='left')
+    p_p_noF.pack(fill='x')
+    spaceF=Frame(window1st,bg='#ff8484')
+    spaceL=Label(spaceF,bg='#ff8484').pack(fill='x')
+    spaceF.pack()
+    regF=Frame(window1st,bg='#ff8484')
+    regB=Button(regF,text='Get details',font=("Ariel",18),borderwidth=4,command=getdetails)
+    regB.pack()
+    regF.pack(fill='x')
+    window1st.mainloop()
+first_window()

@@ -1,0 +1,9 @@
+Key:97c971c2
+Secret:2V1xCMUINMtxRDYW
+
+curl -X POST  https://rest.nexmo.com/sms/json \
+-d api_key=97c971c2 \
+-d api_secret=2V1xCMUINMtxRDYW \
+-d to=917673947687 \
+-d from="NEXMO" \
+-d text="Hello from Nexmo"
